@@ -64,7 +64,81 @@ def plot_stock(ticker):
     plt.savefig('stock.png')
     plt.close()
 
+
+functions = [
     
+    {
+        'name': 'get_stocks',
+        'description': 'Gets the latest price of a Stock given a ticker symbol of a company.',
+        'parameters': {
+            'type': 'object',
+            'properties': {
+                'ticker' : {
+                    'type' : 'string',
+                    'description': 'The stock ticker symbol of a company (for example GOOGL for GOOGLE).'
+                },
+                },
+            'required': ['ticker']
+            }
+            
+    },
+    {
+        'name' : 'SMA_calculate',
+        'description': 'Calculate Simple Moving Average for a given stock ticker and window.',
+        'parameters': {
+            'type' : 'object',
+            'properties': {
+                'ticker' : {
+                    'type': 'string',
+                    'description': 'The stock ticker symbol of a company (for example GOOGL for GOOGLE)',
+                    
+                },
+                'window': {
+                    'type': 'integer',
+                    'description': 'The TimeFrame to be considered when calculating SMA'
+                }
+            },
+            'required': ['ticker', 'window'],
+        },
+        
+    },
+    {
+        'name' : 'EMA_calculate',
+        'description': 'Calculate the Exponential Moving Average for a given stock ticker and a window.',
+        'parameters': {
+            'type': 'object',
+            'properties': {
+                'ticker':{
+                    'type':'string',
+                    'description': 'The stock ticker symbol of a company (for example GOOGL for GOOGLE)',
+                },
+                'window' : {
+                    'type' : 'integer',
+                    'description': 'The timeframe to be considered when calculating EMA'
+                }
+            },
+            'required' : ['ticker','window']
+        },
+    },
+    {
+        'name': 'RSI_calculate',
+        'description': 'Calculate the RSI for a given stock ticker and a window.',
+        'parameters' : {
+            'type': 'object',
+            'properties':{
+                'ticker': {
+                    'type':'string',
+                    'description': 'The stock ticker symbol of a company (for example GOOGL for GOOGLE)',
+                },
+            },
+            'required' : ['ticker', 'window'],
+        },
+    },
+    {
+        
+    }
+    
+]
 
 
     
