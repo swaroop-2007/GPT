@@ -122,7 +122,7 @@ functions = [
     },
     {
         'name': 'RSI_calculate',
-        'description': 'Calculate the RSI for a given stock ticker and a window.',
+        'description': 'Calculate the RSI for a given stock ticker.',
         'parameters' : {
             'type': 'object',
             'properties':{
@@ -131,14 +131,49 @@ functions = [
                     'description': 'The stock ticker symbol of a company (for example GOOGL for GOOGLE)',
                 },
             },
-            'required' : ['ticker', 'window'],
+            'required' : ['ticker'],
         },
     },
     {
+        'name' : 'calculate_MACD',
+        'description': 'Calculate the MACD for a given stock ticker.',
+        'parameters':{
+            'type':'object',
+            'properties': {
+                'ticker': {
+                'type': 'string',
+                'description': 'The stock ticker symbol of a company (for example GOOGL for GOOGLE)',
+                },  
+            },
+            'required': ['ticker'],
+        },
         
-    }
+    },
+    
+    {
+        'name':'plot_stock',
+        'description': 'Plot the stock price for the last year given the ticker symbol of the company.',
+        'parameters': {
+            'type': 'object',
+            'properties': {
+                'ticker': {
+                    'type': 'string',
+                    'description': 'The stock ticker symbol of a company (for example GOOGL for GOOGLE)',
+                },
+            },
+            'required': ['ticker'],
+        },
+    },
     
 ]
 
 
-    
+available_functions = {
+    'get_stocks': get_stocks,
+    'SMA_calculate': SMA_calculate,
+    'EMA_calculate' : EMA_calculate,
+    'RSI_calculate' : RSI_calculate,
+    'calculate_MACD': calculate_MACD,
+    'plot_stock': plot_stock
+}
+
