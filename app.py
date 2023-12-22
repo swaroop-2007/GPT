@@ -189,8 +189,8 @@ if user_input:
     try:
         st.session_state['messages'].append({'role': 'user', 'content': f'{user_input}'})
         
-        response = openai.ChatCompletion.create(
-            model = 'gpt-3.5=turbo-0613',
+        response = openai.chat.completions.create(
+            model = 'gpt-3.5-turbo-0613',
             messages = st.session_state['messages'],
             functions = functions,
             function_call = 'auto'
@@ -226,7 +226,7 @@ if user_input:
                         'content': function_response
                     }
                 )
-                second_response = openai.ChatCompletion.create(
+                second_response = openai.chat.completions.create(
                     model = 'gpt-3.5-turbo-0613',
                     messages = st.session_state['messages']
                 )
@@ -235,5 +235,5 @@ if user_input:
         else:
             st.text(response_message['content'])
             st.session_state['messages'].append({'role':'assistant', 'content': response_message['content']})                     
-    except:
-        st.text('Try Again!')
+    except Exception as e:
+        raise e
