@@ -181,9 +181,31 @@ available_functions = {
 if 'messages' not in st.session_state:
     st.session_state['messages'] = []
     
+
+
 st.title('Stock Analysis GPT')
 
+
+
+
+st.markdown(
+    """
+    <style>
+    .stTextInput {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Use st.text_input to create the input at the bottom
 user_input = st.text_input('Your input')
+
+
 
 if user_input:
     try:
