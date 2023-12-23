@@ -183,24 +183,47 @@ if 'messages' not in st.session_state:
     
 
 
-st.title('Stock Analysis GPT')
+st.title('GPT for Stock Market')
 
 
+#Adding the Sidebar
+if 'questions_history' not in st.session_state:
+    st.session_state['questions_history'] = []
 
 
-st.markdown(
+st.sidebar.markdown(
     """
     <style>
-    .stTextInput {
+    .sidebar-content {
         position: fixed;
-        bottom: 0;
         left: 0;
-        width: 100%;
+        top: 0;
+        padding: 10px;
+        background-color: #f0f0f0;
+        overflow-y: auto;
+        height: 100%;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
+
+# Display the questions history in the sidebar
+st.sidebar.markdown('<div class="sidebar-content">', unsafe_allow_html=True)
+st.sidebar.markdown("### Chat History")
+
+for question in st.session_state['questions_history']:
+    st.sidebar.markdown(f"- {question}")
+
+st.sidebar.markdown("</div>", unsafe_allow_html=True)
+
+
+
+# End of SideBar Addition
+
+
+
+
 
 # Use st.text_input to create the input at the bottom
 user_input = st.text_input('Your input')
@@ -210,6 +233,12 @@ user_input = st.text_input('Your input')
 if user_input:
     try:
         st.session_state['messages'].append({'role': 'user', 'content': f'{user_input}'})
+        
+        
+        
+        # Add of sidebar Logic
+        st.session_state['questions_history'].append(user_input)
+        
         
         response = openai.ChatCompletion.create(
             model = 'gpt-3.5-turbo-0613',
