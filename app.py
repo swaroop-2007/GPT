@@ -6,7 +6,9 @@ import streamlit as st
 import yfinance as yf 
 
 
-openai.api_key = open("apikey", "r").read()
+#openai.api_key = open("apikey", "r").read()
+
+openai.api_key = st.secrets['auth_token']
 
 
 def get_stocks(ticker):
