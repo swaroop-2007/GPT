@@ -288,5 +288,5 @@ if user_input:
         else:
             st.text(response_message['content'])
             st.session_state['messages'].append({'role':'assistant', 'content': response_message['content']})                     
-    except Exception as e:
-        raise e
+    except:
+        st.text(response_message['content'])
